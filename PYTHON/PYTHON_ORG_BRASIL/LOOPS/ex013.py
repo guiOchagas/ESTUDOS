@@ -1,0 +1,18 @@
+"""Faça um programa que peça dois números, base e expoente, calcule e mostre o primeiro número elevado ao segundo número. Não utilize a função de potência da linguagem."""
+
+print("CALCULAR EXPOENTE")
+
+base = int(input('BASE: '))
+exp = int(input('EXPOENTE: '))
+result = base
+
+for c in range(exp - 1):
+    result = result * base
+
+for c in range(exp):
+    if c < exp - 1:
+        print(f"{base} *", end=" ")
+    else:
+        print(f"{base}", end=" ")
+
+print(f"= {result}")
