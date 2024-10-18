@@ -54,16 +54,19 @@ while True:
     elif votos == 0:
         break
 
+votos_contados = [0] * 10
+total_votos = len(lista_votos)
+
+for voto in lista_votos:
+    votos_contados[voto - 1] += 1
+    
 print(lista_votos)
 pularlinha('RESULTADO DA VOTAÇÃO')
 print(f'Foram computados {len(lista_votos)} votos.')
 pularlinha()
 
 print(f'{"JOGADOR":<10}{"VOTOS":^10}{"%":>10}')
-print(lista)
-print(lista_votos)
-jogadores_votados = set(lista_votos)
-lista.append(lista_votos)
-lista.append(jogadores_votados)
-print(lista)
-
+for i in range(10):
+    if votos_contados[i] > 0:
+        porcentagem = (votos_contados[i] / total_votos) * 100
+        print(f'{i + 1:<10}{votos_contados[i]:^10}{porcentagem:>10.2f}')
