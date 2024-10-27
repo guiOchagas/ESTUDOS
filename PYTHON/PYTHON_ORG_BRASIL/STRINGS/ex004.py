@@ -10,6 +10,6 @@ FULANO"""
 
 nome = 'GUILHERME'
 
-for letra in range(1, len(nome) + 1):
-    print(nome[:letra])
+for i in range(1, len(nome) + 1):
+    print(nome[:i])
 
