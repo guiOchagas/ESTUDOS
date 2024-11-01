@@ -15,9 +15,9 @@ OBS: Sempre que acontecer um abastecimento é necessário atualizar a quantidade
 
 
 class bombaCombustivel():
-    def __init__(self, preco=3.5, tipo='Gasolina', qtd=1000):
+    def __init__(self, preco=4.5, tipo='Gasolina', qtd=1000):
         self.preco = preco
-        self.tipo = tipo
+        self.tipo = ['Gasolina', 'Alcool']
         self.qtd = float(qtd)
 
     def abastecerPorValor(self):
@@ -35,17 +35,23 @@ class bombaCombustivel():
         print(f'Abastecido => {litros:.2f} litros = R${valor:.2f}')
         
     def alterarValor(self):
-        novo_valor = float(input('DIGITE UM NOVO VALOR PARA ABASTECER: '))
+        print('**ALTERAR VALOR SELECIONADO**')
+        self.abastecerPorValor()
+        
+    def alterarCombustivel(self):
+        print('**ALTERAR COMBUSTIVEL SELECIONADO')
+        print("""[1] - GASOLINA
+[2] - ALCOOL""")
+        alterar = int(input('DIGITE UMA OPÇÃO:'))
+        if alterar == 1:
+            self.tipo = self.tipo[0]
+        else:
+            self.tipo = self.tipo[1]
     
-    def alterarCombustivel():
-        pass
-    
-    def alterarQuantidadeCombustivel():
-        pass
+    def alterarQuantidadeCombustivel(self):
+        print('**ALTERAR QUANTIDADE SELECIONADO**')
+        self.abastecerPorLitro()
     
 bomba = bombaCombustivel()
-print(bomba.qtd)
-print()
 
-
-
+bomba.alterarQuantidadeCombustivel()
