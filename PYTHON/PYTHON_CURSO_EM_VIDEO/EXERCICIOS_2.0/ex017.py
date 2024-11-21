@@ -11,31 +11,66 @@ d. uma lista com todas as pessoas com idade acima da média.
 """
 
 
-pessoas = {'NOMES': list(), 'IDADES': list(), 'GENERO': list()}
+pessoa = {}
+geral = []
+
+soma_idade = 0
+media_idade = 0
 
 
 while True:
+
+    pessoa.clear()
+
     nome = str(input('NOME: ')).capitalize()
     idade = int(input('IDADE: '))
-    sexo = str(input('SEXO: ')).upper()[0]
+    soma_idade += idade
 
-    pessoas['NOMES'].append(nome)
-    pessoas['IDADES'].append(idade)
-    pessoas['GENERO'].append(sexo)
+    #Validação
+    while True:
+        sexo = str(input('SEXO: ')).upper()[0]
+        if sexo in 'MF':
+            break
+        else:
+            print('Erro, digite apenas [M] ou [F]')
 
+    pessoa['NOME'] = nome
+    pessoa['IDADE'] = idade
+    pessoa['GENERO'] = sexo
+
+    geral.append(pessoa.copy())
+
+    print()
     continuar = str(input('Continuar? [S/N] ')).upper()
+    print()
     if continuar == 'N':
         break
 
-#Total de pessoas cadastradas
-print(pessoas)
-print(f'Total de pessoas cadastradas: {len(pessoas['NOMES'])}')
 
-#Idade média do grupo
-media = sum(pessoas['IDADES']) / len(pessoas['IDADES'])
-print(f'Média de idade: {media}')
+print(pessoa)
+print(geral)
 
-#Mulheres cadastradas
-for pessoa in pessoas['GENERO']:
-    if pessoa == 'F':
-        print(pessoas['NOMES'])
+print()
+
+# Quantidade de pessoas cadastradas
+print(f'TOTAL DE PESSOAS CADASTRADAS: {len(geral)}')
+print()
+
+# Média de idade do grupo
+media_idade = soma_idade / len(geral)
+print(f'MÉDIA DE IDADE DO GRUPO: {media_idade}')
+print()
+
+# Mulheres cadastradas
+print('LISTA DE MULHERES CADASTRADAS:')
+for x in geral:
+    if x['GENERO'] == 'F':
+        print(f"• {x['NOME']}")
+print()
+    
+# Lista com as pessoas com idade acima da média
+print('LISTA DAS PESSOAS COM IDADE ACIMA DA MÉDIA:')
+for x in geral:
+    if x['IDADE'] > media_idade:
+        print(f"• {x['NOME']}")
+print()
